@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Basic localStorage test for Qt WebEngine.</title>
+        <script>
+            function updateStorageContent() {
+                var value = localStorage.getItem("value")
+                if (value)
+                    value++
+                else
+                    value = 1
+                localStorage.setItem("value", value)
+                localStorage.setItem("timestamp", new Date())
+            }
+            function displayStorageContent() {
+                var valuePane = document.getElementById("value-pane")
+                if (localStorage.getItem("value")) {
+                    valuePane.innerHTML = "Local storage value: " + localStorage.getItem("value") + ", saved at " + localStorage.getItem("timestamp")
+                } else {
+                    valuePane.innerHTML = "Local storage is empty."
+                }
+            }
+
+            function clearStorageAndUpdate() {
+                localStorage.clear();
+                displayStorageContent();
+            } 
+
+            function checkAndAlterLocalStorage() {
+                var outputPane = document.getElementById("output-pane")
+                if (typeof localStorage !== "undefined") {
+                    outputPane.innerHTML = "Local storage is enabled."
+                    displayStorageContent()
+                    updateStorageContent()
+                } else {
+                    outputPane.innerHTML = "Local Storage is disabled."
+                    valuePane.innerHTML = ""
+                }
+                    
+            }
+
+        </script>
+    </head>
+    <body onload="checkAndAlterLocalStorage()">
+        <div>
+            <h1 id="output-pane">Test for local storage.
+            </h1>
+            <h2 id="value-pane"></h2>
+        </div>
+        <button id="clear-button" onclick="clearStorageAndUpdate()">Clear local storage.</button> 
+    </body>
+</html>
