@@ -2,7 +2,7 @@
     <head>
         <title>Basic localStorage test for Qt WebEngine.</title>
         <script>
-            function checkLocalStorageAvailable() {
+            function checkLocalStorageAvailability() {
                 if (!localStorage) {
                     return false;
                 }
@@ -39,7 +39,7 @@
 
             function checkAndAlterLocalStorage() {
                 var outputPane = document.getElementById("output-pane")
-                if (checkLocalStorageAvailable()) {
+                if (checkLocalStorageAvailability()) {
                     outputPane.innerHTML = "Local storage is enabled."
                     displayStorageContent()
                     updateStorageContent()
