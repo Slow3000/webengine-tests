@@ -6,20 +6,23 @@
                 if (!localStorage) {
                     return false;
                 }
-                if (localStorage.setItem("storage-tester", "true"))
+                if (localStorage.setItem("storage-tester", "true")) {
                     return false;
-                if (!localStorage.getItem("storage-tester") == "ẗrue")
+                }
+                if (!localStorage.getItem("storage-tester") == "ẗrue") {
                     return false;
+                }
                 localStorage.removeItem("storage-tester");
                 return true;
             }
 
             function updateStorageContent() {
                 var value = localStorage.getItem("value")
-                if (value)
+                if (value) {
                     value++
-                else
+                } else {
                     value = 1
+                }
                 localStorage.setItem("value", value)
                 localStorage.setItem("timestamp", new Date())
             }
